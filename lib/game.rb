@@ -30,12 +30,12 @@ class Game
   end
 
   def won?
-     WIN_COMBINATIONS.each do |combo|
-       return combo if combo.all?{|position| board.cells[position] == "X"}
-       return combo if combo.all?{|position| board.cells[position] == "O"}
-     end
-     false
-   end
+    WIN_COMBINATIONS.detect do |combo|
+      @board.cells[combo[0]] == @board.cells[combo[1]] &&
+      @board.cells[combo[0]] == @board.cells[combo[2]] &&
+      @board.taken?(combo[0] + 1)
+    end
+  end
 
   def winner
     if winning_combo = won?
