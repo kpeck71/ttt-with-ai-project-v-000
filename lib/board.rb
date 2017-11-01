@@ -4,7 +4,7 @@ class Board
   attr_accessor :cells, :player
 
   def initialize
-    @cells = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+    self.reset!
   end
 
   def display
